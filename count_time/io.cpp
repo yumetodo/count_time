@@ -34,7 +34,7 @@ std::string date_io_help_c::encode(const std::chrono::milliseconds & msec) const
 
 std::chrono::milliseconds date_io_help_c::decode(const std::string & str) const noexcept(false)
 {
-	if (str.size() < 22) throw std::range_error("In function `date_io_help_c::decode`: Str's length is too shrot. require 22 or over.");
+	if (str.size() < 11) throw std::range_error("In function `date_io_help_c::decode`: Str's length is too shrot. require 11 or over.");
 	const uint32_t crc32 = [](const std::string& str) {
 		std::stringstream ss;
 		ss << str;
@@ -47,7 +47,7 @@ std::chrono::milliseconds date_io_help_c::decode(const std::string & str) const 
 
 	const uint8_t check_digit = str_wihtout_crc32.back() - '0';
 	str_wihtout_crc32.pop_back();
-	if (crc32 != calc_check_digit_wrap(str_wihtout_crc32)) throw std::runtime_error("input string is illegal.");//check_digit
+	if (check_digit != calc_check_digit_wrap(str_wihtout_crc32)) throw std::runtime_error("input string is illegal.");//check_digit
 
 	const auto time = [](const std::string& str) {
 		std::stringstream ss;

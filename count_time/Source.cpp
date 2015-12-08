@@ -8,8 +8,8 @@
 #include "check_digit.hpp"
 #include "crc32.hpp"
 #include "io.hpp"
-constexpr int WINDOW_WIDTH = 640;
-constexpr int WINDOW_HEIGHT = 200;
+constexpr int WINDOW_WIDTH = 360;
+constexpr int WINDOW_HEIGHT = 50;
 using day = std::chrono::duration<std::int32_t, std::ratio<24 * 60 * 60> >;
 template<class _Rep, class _Period> std::string to_string(const std::chrono::duration<_Rep, _Period>& time, const std::array<const char*, 4>& strs = {"日", "時間", "分", "秒"} ) {
 	using namespace std::chrono;
