@@ -15,9 +15,3 @@ private:
 	struct Impl;
 	std::unique_ptr<Impl> pimpl;
 };
-using day = std::chrono::duration<std::int32_t, std::ratio<24 * 60 * 60> >;
-template<class _Rep, class _Period> std::string to_string(const std::chrono::duration<_Rep, _Period>& time) {
-	using std::chrono::duration_cast;
-	std::string str;
-	str += std::to_string(duration_cast<day>(time));
-}
